@@ -1,0 +1,13 @@
+platforms/
+plugins/
+node_modules
+### Yeoman template
+node_modules/
+bower_components/
+*.log
+
+www/lib/
+
+build/
+dist/
+
