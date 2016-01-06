@@ -3,8 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src * 'unsafe-eval' 'unsafe-inline'">
     <title></title>
-
 
     <!-- compiled css output -->
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -13,24 +14,31 @@
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
-    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
     <script src="cordova.js"></script>
 
+    <!-- Firebase and AngularFire Stuff -->
+    <script src="lib/firebase/firebase.js"></script>
+    <script src="lib/angularfire/dist/angularfire.min.js"></script>
+
     <!-- your app's js -->
-    <script type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXLc3iYmOl_F8Z3f6gETKmHA302mkEDyU&libraries=drawing">
-    </script>
-    <script src="js/brisra.js"></script>
-    <script src="js/map/brisra-map.js"></script>
+    <!--<script src="//maps.google.com/maps/api/js?key=AIzaSyBXLc3iYmOl_F8Z3f6gETKmHA302mkEDyU"></script>-->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="js/app.js"></script>
+    <script src="js/services/FirebaseSrvc.js"></script>
+
+    <!-- Maps Modules -->
+    <script src="js/map/MapCtrl.js"></script>
+    <script src="js/map/MapDrct.js"></script>
+
+    <!-- User Modules -->
+    <script src="js/user/UserCtrl.js"></script>
+
+    <!-- Home Modules -->
+    <script src="js/home/HomeCtrl.js"></script>
+
 </head>
-<body ng-app="brisra">
-
-<ion-pane>
-    <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Maps</h1>
-    </ion-header-bar>
-    <ion-nav-view></ion-nav-view>
-</ion-pane>
-
+<body ng-app="braApp">
+<ion-nav-view></ion-nav-view>
 </body>
 </html>

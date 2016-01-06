@@ -1,6 +1,7 @@
 {
   "name": "dev.app.brisra",
   "app_id": "",
+  "defaultBrowser": "chrome",
   "gulpStartupTasks": [
     "sass",
     "watch"

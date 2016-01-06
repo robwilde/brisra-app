@@ -21,11 +21,36 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
-.scroll {
-  height: 100%;
+#map {
+  width: 70%;
+  height: 75%;
+  margin: 5px auto;
+  box-shadow: 0 3px 25px black;
 }
 
-#map {
-  width: 100%;
-  height: 100%;
+.img-responsive {
+  width: 90%;
+  height: auto;
+}
+
+.center-block {
+  display: block;
+  margin: 0 auto;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.big-click {
+  font-size: 18px;
+
+}
+
+.dark-page {
+  background: #111111;
+}
+
+input.user-rego-input {
+  text-transform: uppercase;
 }
