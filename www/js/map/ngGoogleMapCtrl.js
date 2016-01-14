@@ -5,13 +5,15 @@ angular.module('braApp.map', [])
 
     .controller('MapCtrl', function ($scope, $log, $timeout, $cordovaGeolocation, $ionicModal, $ionicLoading, uiGmapGoogleMapApi) {
 
-        $ionicLoading.show({
-            content: 'Loading Your Map...',
-            animation: 'fade-in',
-            showBackdrop: true,
-            maxWidth: 200,
-            showDelay: 0
-        });
+        $scope.showLoading = function(){
+            $ionicLoading.show({
+                content: 'Loading Your Map...',
+                animation: 'fade-in',
+                showBackdrop: true,
+                maxWidth: 200,
+                showDelay: 0
+            });
+        };
 
         // Load the modal from the given template URL
         $ionicModal.fromTemplateUrl('templates/help.html', function ($ionicModal) {
@@ -83,7 +85,7 @@ angular.module('braApp.map', [])
 
         uiGmapGoogleMapApi.then(function (maps) {
             // Don't pass timeout parameter here; that is handled by setTimeout below
-            $scope.loadingMap = true;
+            $scope.showLoading();
 
             var posOptions = {enableHighAccuracy: true};
             $cordovaGeolocation.getCurrentPosition(posOptions)
@@ -98,7 +100,7 @@ angular.module('braApp.map', [])
         });
 
         $scope.findMe = function(){
-            $scope.loadingMap = true;
+            $scope.showLoading();
 
             var posOptions = {enableHighAccuracy: true};
             $cordovaGeolocation.getCurrentPosition(posOptions)
