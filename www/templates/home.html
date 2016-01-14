@@ -3,25 +3,46 @@
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
     <ion-content scroll="false" class="has-header">
-        <img class="center-block img-responsive" src="img/bra-road-large.png" alt="">
-        <div class="list list-inset">
-            <label class="item item-input">
-                <span class="input-label">Licence Plate:</span>
-                <input class="user-rego-input" type="text" ng-model="user.rego">
-            </label>
-            <div class="card">
-                <div class="item item-text-wrap">
-                    Enter your Licence plate number and press enter.
-                    If your details are registered, you will go straight to the map to send us your position.
-                </div>
+
+        <div class="list">
+
+            <div class="item item-input-inset">
+                <label class="item-input-wrapper">
+                    <input class="user-rego-input" type="text" ng-model="user.rego" placeholder="Licence Plate">
+                </label>
+                <button class="button button-small" ng-click="checkRego(user)">
+                    Submit
+                </button>
+            </div>
+
+        </div>
+
+        <div class="card">
+            <div class="item item-text-wrap">
+                Enter your Licence plate number and press enter.
+                If your details are registered, you will go straight to the map to send us your position.
             </div>
         </div>
 
+        <img class="center-block img-responsive" src="img/bra-road-large.png" alt="">
+        <!--<div class="list list-inset">-->
+            <!--&lt;!&ndash;<label class="item item-input">&ndash;&gt;-->
+                <!--&lt;!&ndash;<span class="input-label">Licence Plate:</span>&ndash;&gt;-->
+                <!--&lt;!&ndash;<input class="user-rego-input" type="text" ng-model="user.rego">&ndash;&gt;-->
+            <!--&lt;!&ndash;</label>&ndash;&gt;-->
+            <!--<div class="card">-->
+                <!--<div class="item item-text-wrap">-->
+                    <!--Enter your Licence plate number and press enter.-->
+                    <!--If your details are registered, you will go straight to the map to send us your position.-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
         <div class="tabs tabs-positive tabs-icon-top">
-            <a class="tab-item" ng-click="checkRego(user)">
-                <i class="icon ion-navigate"></i>
-                Go to Map
-            </a>
+            <!--<a class="tab-item" ng-click="checkRego(user)">-->
+                <!--<i class="icon ion-navigate"></i>-->
+                <!--Go to Map-->
+            <!--</a>-->
 
             <a class="tab-item" href="tel:0432 268 294">
                 <i class="icon ion-ios-telephone"> </i>
