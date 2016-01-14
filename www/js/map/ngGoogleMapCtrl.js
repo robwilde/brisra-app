@@ -27,7 +27,7 @@ angular.module('braApp.map', [])
                 options: { draggable: true },
                 events: {
                     dragend: function (marker, eventName, args) {
-                        $log.log('marker dragend');
+                        //$log.log('marker dragend');
                         var lat = marker.getPosition().lat();
                         var lon = marker.getPosition().lng();
                         $log.log(lat);
@@ -82,10 +82,11 @@ angular.module('braApp.map', [])
             $cordovaGeolocation.getCurrentPosition(posOptions)
                 .then(function (position) {
                     console.log("Find Me: ", position);
-                    //initializeMap(position);
+                    initializeMap(position);
+                    $scope.map.zoom = 16;
                 }, function (error) {
                     console.log(error);
-                    //initializeMap();
+                    initializeMap();
                 });
         };
 
