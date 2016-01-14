@@ -1,6 +1,6 @@
 {
   "name": "dev.app.brisra",
-  "app_id": "",
+  "app_id": "c831dbf5",
   "defaultBrowser": "chrome",
   "gulpStartupTasks": [
     "sass",

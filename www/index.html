@@ -6,13 +6,13 @@
     <title></title>
 
     <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self';
-        style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
-        font-src 'self' https://fonts.gstatic.com 'unsafe-inline';
-        img-src 'self' data: https://*.googleapis.com https://*.gstatic.com/ 'unsafe-inline';
-        script-src 'self' https://*.firebaseio.com http://192.168.5.222:* https://*.googleapis.com https://maps.gstatic.com http://localhost:* 'unsafe-inline' 'unsafe-eval';
-        frame-src 'self' https://*.firebaseio.com gap://ready;
-        connect-src 'self'  wss://*.firebaseio.com ws://192.168.5.222:*">
+        default-src &apos;self&apos;;
+        style-src &apos;self&apos; https://fonts.googleapis.com &apos;unsafe-inline&apos;;
+        font-src &apos;self&apos; https://fonts.gstatic.com &apos;unsafe-inline&apos;;
+        img-src &apos;self&apos; data: https://*.googleapis.com https://*.gstatic.com/ &apos;unsafe-inline&apos;;
+        script-src &apos;self&apos; https://*.firebaseio.com http://192.168.5.222:* https://*.googleapis.com https://maps.gstatic.com http://localhost:* &apos;unsafe-inline&apos; &apos;unsafe-eval&apos;;
+        frame-src &apos;self&apos; https://*.firebaseio.com gap://ready;
+        connect-src &apos;self&apos;  wss://*.firebaseio.com ws://192.168.5.222:*">
 
 
     <!-- compiled css output -->
@@ -20,19 +20,21 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+<script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
     <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
 
     <!--some external modules-->
-    <script src='lib/lodash/lodash.min.js'></script>
+    <script src="lib/lodash/lodash.min.js"></script>
     <script src="lib/angular-simple-logger/dist/angular-simple-logger.min.js"></script>
-    <script src='lib/angular-google-maps/dist/angular-google-maps.min.js'></script>
+    <script src="lib/angular-google-maps/dist/angular-google-maps.min.js"></script>
 
     <!-- Firebase and AngularFire Stuff -->
     <script src="lib/firebase/firebase.js"></script>
     <script src="lib/angularfire/dist/angularfire.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
+    <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
+<!-- <script src="cordova.js"></script> -->
 
     <!-- your app's js -->
     <!--<script src="//maps.google.com/maps/api/js?key=AIzaSyBXLc3iYmOl_F8Z3f6gETKmHA302mkEDyU"></script>-->

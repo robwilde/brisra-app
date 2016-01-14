@@ -7,7 +7,7 @@
     "use strict";
 
     angular.module('braApp',
-        ['ionic', 'firebase', 'ngCordova', 'uiGmapgoogle-maps', 'braApp.home', 'braApp.user', 'braApp.map'])
+        ['ionic','ionic.service.core', 'firebase', 'ngCordova', 'uiGmapgoogle-maps', 'braApp.home', 'braApp.user', 'braApp.map'])
 
         .config(function(uiGmapGoogleMapApiProvider) {
             uiGmapGoogleMapApiProvider.configure({
