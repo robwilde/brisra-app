@@ -7,7 +7,15 @@
     "use strict";
 
     angular.module('braApp',
-        ['ionic', 'firebase', 'braApp.home', 'braApp.user', 'braApp.map'])
+        ['ionic', 'firebase', 'ngCordova', 'uiGmapgoogle-maps', 'braApp.home', 'braApp.user', 'braApp.map'])
+
+        .config(function(uiGmapGoogleMapApiProvider) {
+            uiGmapGoogleMapApiProvider.configure({
+                //key: 'your api key',
+                //libraries: 'weather,geometry,visualization',
+                v: '3.17'
+            });
+        })
 
         .run(function ($ionicPlatform) {
             $ionicPlatform.ready(function () {

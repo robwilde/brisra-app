@@ -9745,3 +9745,17 @@ a.button {
 
 input.user-rego-input {
   text-transform: uppercase; }
+
+.angular-google-map-container {
+  height: 450px; }
+
+p {
+  padding: 10px;
+  text-align: center; }
+
+.marker-labels {
+  background-color: azure;
+  padding: 5px; }
+
+.card.map-card {
+  margin: 0; }

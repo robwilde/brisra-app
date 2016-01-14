@@ -1,18 +1,27 @@
-<ion-view title="Your Location">
+<ion-view class="view-with-bg" title="map">
+
     <ion-nav-buttons side="left">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
-    <ion-content scroll="false" class="has-header">
-        <div id="map" lat="-27.471011" lng="153.023449" zoom="10" map></div>
 
-        <div class="list list-inset">
-            <label class="item item-input">
-                <input type="text" ng-model="user.mobile" placeholder="Enter Mobile">
-            </label>
+    <ion-content scroll="false" class="padding">
 
-            <button class="button button-full button-positive" ng-click="saveDetails(user)">
-                Save
-            </button>
+        <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+            <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+            </ui-gmap-marker>
+        </ui-gmap-google-map>
+
+        <div class="card map-card">
+            <div class="item item-text-wrap">
+                <h4>You can click Find Me to center the map to your location. Zoom in, Hold the marker to adjust.
+                    Press Save Me to send us your location. We Will confirm your location and advise ETA.</h4>
+            </div>
         </div>
+
+        <div class="bar bar-footer bar-positive">
+            <button class="button icon ion-navigate pull-left" ng-click="findMe()">Find Me</button>
+            <button class="button icon ion-paper-airplane pull-right">Save Me</button>
+        </div>
+
     </ion-content>
 </ion-view>

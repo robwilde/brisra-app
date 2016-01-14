@@ -5,9 +5,9 @@
     "use strict";
 
     angular.module('braApp.home', ['ionic'])
-        .controller('HomeCtrl', ['$rootScope', '$scope', '$log', '$state', 'appFire', '$ionicPopup', homeCtrl]);
+        .controller('HomeCtrl', ['$rootScope', '$scope', '$log', '$state', 'appFire', '$ionicHistory', '$ionicPopup', homeCtrl]);
 
-    function homeCtrl($rootScope, $scope, $log, $state, appFire, $ionicPopup) {
+    function homeCtrl($rootScope, $scope, $log, $state, appFire, $ionicHistory, $ionicPopup) {
 
         /*
          * client: end user that has been recorded into the system, current client
@@ -17,7 +17,7 @@
         $scope.user = {};
         var clients = appFire.clients;
 
-        $log.debug('HomeCtrl - clients', clients);
+        //$log.debug('HomeCtrl - clients', clients);
 
         $scope.checkRego = function (user) {
             $rootScope.client = undefined;
@@ -47,6 +47,11 @@
                     template: 'Your details are in our system, press ok to pin-point your location!!'
                 });
                 clientYes.then(function () {
+
+                    $ionicHistory.nextViewOptions({
+                        disableBack: true
+                    });
+
                     $scope.user.rego = '';
                     $state.go('app.map');
                 })

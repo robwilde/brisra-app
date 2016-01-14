@@ -6,10 +6,12 @@
     "use strict";
 
     angular.module('braApp.map', ['ionic'])
-        .controller('MapCtrl', ['$scope', 'appFire', '$ionicPopup', MapCtrl]);
+        .controller('MapCtrl', ['$scope', 'appFire', '$ionicPopup', '$ionicNavBarDelegate', MapCtrl]);
 
 
-    function MapCtrl($scope, appFire, $ionicPopup) {
+    function MapCtrl($scope, appFire, $ionicPopup, $ionicNavBarDelegate) {
+
+        $ionicNavBarDelegate.showBackButton(false);
 
         var user = $scope.user;
         $scope.mapDetails = appFire.mapDetails;

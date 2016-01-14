@@ -5,14 +5,14 @@
     "use strict";
 
     angular.module('braApp.user', ['ionic'])
-        .controller('UserCtrl', ['$scope', '$log', 'appFire', '$ionicPopup', '$state', userCtrl]);
+        .controller('UserCtrl', ['$rootScope', '$scope', '$log', 'appFire', '$ionicPopup', '$state', userCtrl]);
 
-    function userCtrl($scope, $log, appFire, $ionicPopup, $state) {
+    function userCtrl($rootScope, $scope, $log, appFire, $ionicPopup, $state) {
 
         $scope.clients = appFire.clients;
         $log.info('UserCtrl - clients', $scope.clients);
 
-        $scope.user = {};
+        $scope.user = $rootScope.client || {};
 
         $scope.userSave = function (user) {
 
