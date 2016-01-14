@@ -3,10 +3,19 @@
  */
 angular.module('braApp.map', [])
 
-    .controller('MapCtrl', function ($scope, $log, $timeout, $cordovaGeolocation, uiGmapGoogleMapApi) {
+    .controller('MapCtrl', function ($scope, $log, $timeout, $cordovaGeolocation, $ionicLoading, uiGmapGoogleMapApi) {
+
+        $ionicLoading.show({
+            content: 'Loading Your Map...',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+        });
 
         var initializeMap = function (position) {
-            console.log('initializeMap position:', position);
+            $log.debug('initializeMap position:', position);
+
             if (!position) {
                 // Default to downtown Toronto
                 position = {
@@ -17,7 +26,7 @@ angular.module('braApp.map', [])
                 };
             }
 
-            console.log('initializeMap set', position);
+            $log.debug('initializeMap set', position);
             $scope.marker = {
                 id: 0,
                 coords: {
@@ -36,8 +45,7 @@ angular.module('braApp.map', [])
                         $scope.marker.options = {
                             draggable: true,
                             labelContent: "lat: " + round(lat, 5) + ' ' + 'lng: ' + round(lon, 5),
-                            //labelContent: "+ and - to zoom, drop the cross on your location",
-                            labelAnchor: "100 0",
+                            labelAnchor: "50 100",
                             labelClass: "marker-labels"
                         };
                     }
@@ -60,17 +68,19 @@ angular.module('braApp.map', [])
                 }
             };
 
-            $log.info('$scope', $scope);
 
         };
 
         uiGmapGoogleMapApi.then(function (maps) {
             // Don't pass timeout parameter here; that is handled by setTimeout below
+            $scope.loadingMap = true;
+
             var posOptions = {enableHighAccuracy: true};
             $cordovaGeolocation.getCurrentPosition(posOptions)
                 .then(function (position) {
                     console.log("Got location: ", position);
                     initializeMap(position);
+                    $ionicLoading.hide();
                 }, function (error) {
                     console.log(error);
                     initializeMap();
@@ -78,12 +88,15 @@ angular.module('braApp.map', [])
         });
 
         $scope.findMe = function(){
+            $scope.loadingMap = true;
+
             var posOptions = {enableHighAccuracy: true};
             $cordovaGeolocation.getCurrentPosition(posOptions)
                 .then(function (position) {
                     console.log("Find Me: ", position);
                     initializeMap(position);
                     $scope.map.zoom = 16;
+                    $ionicLoading.hide();
                 }, function (error) {
                     console.log(error);
                     initializeMap();
