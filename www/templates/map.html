@@ -13,14 +13,28 @@
 
         <div class="card map-card">
             <div class="item item-text-wrap">
-                <h4>You can click Find Me to center the map to your location. Zoom in, Hold the marker to adjust.
-                    Press Save Me to send us your location. We Will confirm your location and advise ETA.</h4>
+                <h4>Zoom in, Hold the marker to adjust.</h4>
             </div>
         </div>
 
-        <div class="bar bar-footer bar-positive">
-            <button class="button icon ion-navigate pull-left" ng-click="findMe()">Find Me</button>
-            <button class="button icon ion-paper-airplane pull-right">Save Me</button>
+        <!--<div class="bar bar-footer bar-positive">-->
+            <!--<button class="button icon ion-navigate pull-left" ng-click="findMe()">Find Me</button>-->
+            <!--<button class="button icon ion-paper-airplane pull-right">Save Me</button>-->
+        <!--</div>-->
+
+        <div class="tabs tabs-positive tabs-icon-top">
+            <a class="tab-item" ng-click="findMe()">
+                <i class="icon ion-navigate"></i>
+                Find Me
+            </a>
+            <a class="tab-item">
+                <i class="icon ion-help" ng-click="modal.show()"></i>
+                Info
+            </a>
+            <a class="tab-item">
+                <i class="icon ion-paper-airplane"></i>
+                Save Me
+            </a>
         </div>
 
     </ion-content>

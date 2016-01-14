@@ -3,7 +3,7 @@
  */
 angular.module('braApp.map', [])
 
-    .controller('MapCtrl', function ($scope, $log, $timeout, $cordovaGeolocation, $ionicLoading, uiGmapGoogleMapApi) {
+    .controller('MapCtrl', function ($scope, $log, $timeout, $cordovaGeolocation, $ionicModal, $ionicLoading, uiGmapGoogleMapApi) {
 
         $ionicLoading.show({
             content: 'Loading Your Map...',
@@ -11,6 +11,16 @@ angular.module('braApp.map', [])
             showBackdrop: true,
             maxWidth: 200,
             showDelay: 0
+        });
+
+        // Load the modal from the given template URL
+        $ionicModal.fromTemplateUrl('templates/help.html', function ($ionicModal) {
+            $scope.modal = $ionicModal;
+        }, {
+            // Use our scope for the scope of the modal to keep it simple
+            scope: $scope,
+            // The animation we want to use for the modal entrance
+            animation: 'slide-in-up'
         });
 
         var initializeMap = function (position) {
@@ -110,6 +120,8 @@ angular.module('braApp.map', [])
                 initializeMap();
             }
         }, 5000);
+
+
 
         function round(value, decimals) {
             return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
