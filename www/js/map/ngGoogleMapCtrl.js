@@ -17,9 +17,6 @@ angular.module('braApp.map', [])
 
         $scope.showGeoCode = false;
 
-        $scope.$on('marker.events', function () {
-            $log.debug('Watch Change ', $scope.map.geoCode);
-        });
 
         // Load the modal from the given template URL
         $ionicModal.fromTemplateUrl('templates/help.html', function ($ionicModal) {
@@ -99,7 +96,7 @@ angular.module('braApp.map', [])
             geocoder.geocode({'latLng': latlng}, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     if (results[1]) {
-                        $log.debug('Update Geocode ', results);
+                        //$log.debug('Update Geocode ', results);
 
                         $scope.$apply(function () {
                             $scope.map.geoCode = results[0].formatted_address;
