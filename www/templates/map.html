@@ -11,7 +11,10 @@
             </ui-gmap-marker>
         </ui-gmap-google-map>
 
-        <div class="geoCode center-text">{{map.geoCode}}</div>
+        <div class="geoCode center-text">
+            <ion-spinner icon="lines" ng-show="showGeoCode"></ion-spinner>
+            {{map.geoCode}}
+        </div>
 
         <!--<div class="card map-card">-->
             <!--<div class="item item-text-wrap">-->

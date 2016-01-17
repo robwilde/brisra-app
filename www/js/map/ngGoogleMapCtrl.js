@@ -3,7 +3,7 @@
  */
 angular.module('braApp.map', [])
 
-    .controller('MapCtrl', function ($scope, $log, $timeout, $cordovaGeolocation, $ionicModal, $ionicLoading, uiGmapGoogleMapApi) {
+    .controller('MapCtrl', function ($scope, $q, $log, $timeout, $cordovaGeolocation, $ionicModal, $ionicLoading, uiGmapGoogleMapApi) {
 
         $scope.showLoading = function () {
             $ionicLoading.show({
@@ -14,6 +14,12 @@ angular.module('braApp.map', [])
                 showDelay: 0
             });
         };
+
+        $scope.showGeoCode = false;
+
+        $scope.$on('marker.events', function () {
+            $log.debug('Watch Change ', $scope.map.geoCode);
+        });
 
         // Load the modal from the given template URL
         $ionicModal.fromTemplateUrl('templates/help.html', function ($ionicModal) {
@@ -49,13 +55,13 @@ angular.module('braApp.map', [])
                 events: {
                     dragend: function (marker, eventName, args) {
                         var lat = marker.getPosition().lat();
-                        var lon = marker.getPosition().lng();
+                        var lng = marker.getPosition().lng();
 
-                        getGeoCode(lat, lon);
+                        getGeoCode(lat, lng);
 
                         $scope.marker.options = {
                             draggable: true,
-                            labelContent: "lat: " + round(lat, 5) + ' ' + 'lng: ' + round(lon, 5),
+                            labelContent: "lat: " + round(lat, 5) + ' ' + 'lng: ' + round(lng, 5),
                             labelAnchor: "50 100",
                             labelClass: "marker-labels"
                         };
@@ -85,18 +91,32 @@ angular.module('braApp.map', [])
         };
 
         var getGeoCode = function (lat, lng) {
+            //var deferred = $q.defer();
+            $scope.map.geoCode = '';
+            $scope.showGeoCode = true;
             var geocoder = new google.maps.Geocoder();
             var latlng = new google.maps.LatLng(lat, lng);
             geocoder.geocode({'latLng': latlng}, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     if (results[1]) {
-                        $log.debug('gecoder ', results);
-                        $scope.map.geoCode = results[0].formatted_address;
+                        $log.debug('Update Geocode ', results);
+
+                        $scope.$apply(function () {
+                            $scope.map.geoCode = results[0].formatted_address;
+                            $scope.showGeoCode = false;
+                        });
+
                     } else {
-                        $scope.map.geoCode = 'Location not found';
+                        $scope.$apply(function () {
+                            $scope.map.geoCode = 'Location not found';
+                            $scope.showGeoCode = false;
+                        });
                     }
                 } else {
-                    $scope.map.geoCode = 'Geocoder failed due to: ' + status;
+                    $scope.$apply(function () {
+                        $scope.map.geoCode = 'Geocoder failed due to: ' + status;
+                        $scope.showGeoCode = false;
+                    });
                 }
             });
         };
@@ -132,7 +152,6 @@ angular.module('braApp.map', [])
                     initializeMap();
                 });
         };
-
 
 
         // Deal with case where user does not make a selection
